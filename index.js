@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-app.get('/',(req,res)=>{
+app.post('/',(req,res)=>{
     console.log('inside intent');
   var speech = ''
     , intent = req.body.result && req.body.result.metadata.intentName ? req.body.result.metadata.intentName : "noIntent"
