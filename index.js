@@ -19,12 +19,13 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/',(req,res)=>{
+    console.log('inside intent');
   var speech = ''
     , intent = req.body.result && req.body.result.metadata.intentName ? req.body.result.metadata.intentName : "noIntent"
  	, contexts = req.body.result && req.body.result.contexts ? req.body.result.contexts : "noContexts"
 
   if (intent === 'Instruct Bot') {
-
+    console.log('inside if');
   amqp.connect('amqp://moggqonv:YSi2cX9QAgKzdawLMa2EPVb1-NB-VvRR@orangutan.rmq.cloudamqp.com/moggqonv', function(err, conn) {
     conn.createChannel(function(err, ch) {
       var q = 'hello';
