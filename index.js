@@ -5,7 +5,6 @@ const express=require('express')
     , bodyParser = require('body-parser')
     , PORT = process.env.PORT||8111
     , amqp = require('amqplib/callback_api');
-;
 
 app.use(function(req, res, next) {
  	res.header("Access-Control-Allow-Origin", "*");
