@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.post('/',(req,res)=>{
-    console.log('inside intent');
+  console.log('inside intent');
   var speech = ''
     , intent = req.body.result && req.body.result.metadata.intentName ? req.body.result.metadata.intentName : "noIntent"
  	, contexts = req.body.result && req.body.result.contexts ? req.body.result.contexts : "noContexts"
@@ -37,7 +37,8 @@ app.post('/',(req,res)=>{
       speech = 'response came form webhook';
       responseToAPI(speech);
     });
-    setTimeout(function() { conn.close(); process.exit(0) }, 500);
+      conn.close();
+    // setTimeout(function() { conn.close(); process.exit(0) }, 500);
   });
   }
   else if(intent === 'noIntent'){
