@@ -37,7 +37,7 @@ app.post('/',(req,res)=>{
       speech = 'response came form webhook';
       responseToAPI(speech);
     });
-      conn.close();
+      // conn.close();
     // setTimeout(function() { conn.close(); process.exit(0) }, 500);
   });
   }
