@@ -30,7 +30,7 @@ app.post('/',(req,res)=>{
       console.log(" [x] Sent %s", msg);
       speech = 'response came form webhook';
       responseToAPI(speech);
-      conn.close();
+      // conn.close();
     });
     // setTimeout(function() { conn.close(); process.exit(0) }, 500);
   });
