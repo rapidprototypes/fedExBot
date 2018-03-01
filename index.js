@@ -6,12 +6,6 @@ const express=require('express')
     , PORT = process.env.PORT||8111
     , amqp = require('amqplib/callback_api');
 
-app.use(function(req, res, next) {
- 	res.header("Access-Control-Allow-Origin", "*");
- 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
- 	next();
-});
-
 app.use(bodyParser.urlencoded({
     extended: false
 }))
@@ -37,7 +31,7 @@ app.post('/',(req,res)=>{
       speech = 'response came form webhook';
       responseToAPI(speech);
     });
-      // conn.close();
+      conn.close();
     // setTimeout(function() { conn.close(); process.exit(0) }, 500);
   });
   }
