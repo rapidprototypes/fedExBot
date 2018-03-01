@@ -6,26 +6,19 @@ const express=require('express')
     , PORT = process.env.PORT||8111
     , amqp = require('amqplib/callback_api');
 
-
-app.use(function(req, res, next) {
- 	res.header("Access-Control-Allow-Origin", "*");
- 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
- 	next();
-});
-
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json())
 
-app.get('/',(req,res)=>{
-  console.log('inside route !');
+app.post('/',(req,res)=>{
+  console.log('inside intent');
   var speech = ''
     , intent = req.body.result && req.body.result.metadata.intentName ? req.body.result.metadata.intentName : "noIntent"
  	, contexts = req.body.result && req.body.result.contexts ? req.body.result.contexts : "noContexts"
 
   if (intent === 'Instruct Bot') {
-    console.log('inside if ');
+    console.log('inside if');
   amqp.connect('amqp://moggqonv:YSi2cX9QAgKzdawLMa2EPVb1-NB-VvRR@orangutan.rmq.cloudamqp.com/moggqonv', function(err, conn) {
     conn.createChannel(function(err, ch) {
       var q = 'hello';
@@ -37,8 +30,9 @@ app.get('/',(req,res)=>{
       console.log(" [x] Sent %s", msg);
       speech = 'response came form webhook';
       responseToAPI(speech);
+      // conn.close();
     });
-    //setTimeout(function() { conn.close(); process.exit(0) }, 500);
+    // setTimeout(function() { conn.close(); process.exit(0) }, 500);
   });
   }
   else if(intent === 'noIntent'){
