@@ -19,7 +19,7 @@ app.post('/',(req,res)=>{
 
   if (intent === 'Instruct Bot') {
     console.log('inside if');
-  amqp.connect('amqp://moggqonv:YSi2cX9QAgKzdawLMa2EPVb1-NB-VvRR@orangutan.rmq.cloudamqp.com/moggqonv', function(err, conn) {
+  amqp.connect('amqp://dttfhkfi:QIb4k-6TzOGR571j_oynfBwI9rxnn_zF@crocodile.rmq.cloudamqp.com/dttfhkfi', function(err, conn) {
     conn.createChannel(function(err, ch) {
       var q = 'hello';
       var msg = req.body.result.resolvedQuery;
