@@ -21,7 +21,7 @@ app.post('/',(req,res)=>{
     console.log('inside if');
   amqp.connect('amqp://dttfhkfi:QIb4k-6TzOGR571j_oynfBwI9rxnn_zF@crocodile.rmq.cloudamqp.com/dttfhkfi', function(err, conn) {
     conn.createChannel(function(err, ch) {
-      var q = 'hello';
+      var q = 'botText';
       var msg = req.body.result.resolvedQuery;
 
       ch.assertQueue(q, {durable: false});
