@@ -1,6 +1,6 @@
 import pika
 
-url ='amqp://moggqonv:YSi2cX9QAgKzdawLMa2EPVb1-NB-VvRR@orangutan.rmq.cloudamqp.com/moggqonv'
+url ='amqp://dttfhkfi:QIb4k-6TzOGR571j_oynfBwI9rxnn_zF@crocodile.rmq.cloudamqp.com/dttfhkfi'
 params = pika.URLParameters(url)
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
