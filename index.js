@@ -28,7 +28,7 @@ app.post('/',(req,res)=>{
       // Note: on Node 6 Buffer.from(msg) should be used
       ch.sendToQueue(q, new Buffer(msg));
       console.log(" [x] Sent %s", msg);
-      speech = 'response came form webhook';
+      speech = 'Hurray! Here is your present';
       responseToAPI(speech);
       // conn.close();
     });
