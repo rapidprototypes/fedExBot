@@ -37,6 +37,7 @@ app.post('/',(req,res)=>{
   }
   else if(intent == 'Default Fallback Intent'){
     speech = '  ';
+    console.log('fallback intent');
     responseToAPI(speech);
   }
   else if(intent === 'noIntent'){
