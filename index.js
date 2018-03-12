@@ -35,6 +35,10 @@ app.post('/',(req,res)=>{
     // setTimeout(function() { conn.close(); process.exit(0) }, 500);
   });
   }
+  else if(intent == 'Default Fallback Intent'){
+    speech = '  ';
+    responseToAPI(speech);
+  }
   else if(intent === 'noIntent'){
     console.log('no intent captured');
   }
