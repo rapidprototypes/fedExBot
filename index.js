@@ -16,7 +16,7 @@ app.post('/',(req,res)=>{
   var speech = ''
     , intent = req.body.result && req.body.result.metadata.intentName ? req.body.result.metadata.intentName : "noIntent"
  	, contexts = req.body.result && req.body.result.contexts ? req.body.result.contexts : "noContexts"
-
+    console.log('You said -- > ', req.body.result.resolvedQuery);
   if (intent === 'Instruct Bot') {
     console.log('inside if');
   amqp.connect('amqp://dttfhkfi:QIb4k-6TzOGR571j_oynfBwI9rxnn_zF@crocodile.rmq.cloudamqp.com/dttfhkfi', function(err, conn) {
@@ -27,7 +27,7 @@ app.post('/',(req,res)=>{
       ch.assertQueue(q, {durable: false});
       // Note: on Node 6 Buffer.from(msg) should be used
       ch.sendToQueue(q, new Buffer(msg));
-      console.log('You said -- > ', req.body.result.resolvedQuery);
+      
       console.log(" [x] Sent %s", msg);
       speech = 'Hurray! Here is your present';
       responseToAPI(speech);
